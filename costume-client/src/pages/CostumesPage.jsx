@@ -19,6 +19,16 @@ import CategoryFilter from "../components/CategoryFilter";
 import CostumeTable from "../components/CostumeTable";
 import AddCostumeDialog from "../components/AddCostumeDialog";
 
+import {
+  mainBoxSx,
+  titleBoxSx,
+  tableContainerSx,
+  categoryFilterBoxSx,
+  fabSx,
+  addDialogPaperSx,
+  searchBarBoxSx,
+} from "./CostumesPage.Style";
+
 // Theme setup
 const theme = createTheme({
   direction: "rtl",
@@ -102,19 +112,7 @@ export default function CostumesPage() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          minHeight: "100vh",
-          width: "100vw",
-          bgcolor: "#fff",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          direction: "rtl",
-          p: 2,
-          position: "relative",
-        }}
-      >
+      <Box sx={mainBoxSx}>
         <SearchBar
           filter={filter}
           setFilter={setFilter}
@@ -122,21 +120,14 @@ export default function CostumesPage() {
           setShowSearch={setShowSearch}
         />
 
-        <Box sx={{ mt: 8, mb: 3 }}>
+        <Box sx={titleBoxSx}>
           <Typography variant="h4" color="primary" fontWeight="bold">
             ניהול תלבושות
           </Typography>
         </Box>
 
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: 820,
-            mx: "auto",
-            mb: 2, // margin bottom for spacing
-          }}
-        >
-          <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+        <Box sx={tableContainerSx}>
+          <Box sx={categoryFilterBoxSx}>
             <CategoryFilter
               categories={categories}
               selectedCategory={selectedCategory}
@@ -148,7 +139,7 @@ export default function CostumesPage() {
 
         <Fab
           color="primary"
-          sx={{ position: "fixed", bottom: 40, left: 40 }}
+          sx={fabSx}
           onClick={() => setShowAddModal(true)}
         >
           <AddIcon sx={{ fontSize: 38 }} />
