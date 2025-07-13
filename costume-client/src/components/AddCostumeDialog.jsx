@@ -31,20 +31,17 @@ export default function AddCostumeDialog({
     <Dialog
       open={open}
       onClose={onClose}
-      dir="rtl"
-      maxWidth="xs"
-      fullWidth={false}
+      maxWidth="sm"
+      fullWidth
       PaperProps={{
         sx: {
+          bgcolor: "#fff",
           borderRadius: 3,
-          bgcolor: "background.paper",
-          border: "2px solid",
-          borderColor: "primary.main",
           p: 2,
         },
       }}
     >
-      <DialogTitle>
+      <DialogTitle sx={{ direction: "rtl" }}>
         הוספת תלבושת חדשה
         <IconButton
           onClick={onClose}
@@ -53,32 +50,40 @@ export default function AddCostumeDialog({
           <CloseIcon />
         </IconButton>
       </DialogTitle>
-      <DialogContent>
+      <DialogContent dir="rtl">
         <Box
           component="form"
           onSubmit={onSubmit}
-          sx={{ mt: 1, display: "flex", flexDirection: "column", gap: 2 }}
+          sx={{ mt: 1, display: "flex", flexDirection: "column", gap: 2, direction: "rtl" }}
         >
           <TextField
             label="שם"
             value={newCostume.name}
             onChange={(e) => setNewCostume({ ...newCostume, name: e.target.value })}
             required
+            InputProps={{ style: { direction: "rtl" } }}
+            sx={{ direction: "rtl" }}
           />
           {!showAddCategoryInput ? (
-            <FormControl fullWidth>
-              <InputLabel>קטגוריה</InputLabel>
+            <FormControl fullWidth sx={{ direction: "rtl" }}>
+              <InputLabel sx={{ direction: "rtl" }}>קטגוריה</InputLabel>
               <Select
                 value={newCostume.category}
                 label="קטגוריה"
                 onChange={(e) => setNewCostume({ ...newCostume, category: e.target.value })}
+                sx={{ direction: "rtl" }}
+                MenuProps={{
+                  PaperProps: {
+                    sx: { direction: "rtl" }
+                  }
+                }}
               >
                 {categories.map((cat) => (
-                  <MenuItem key={cat} value={cat}>
+                  <MenuItem key={cat} value={cat} sx={{ direction: "rtl" }}>
                     {cat}
                   </MenuItem>
                 ))}
-                <MenuItem value="add-new" onClick={() => setShowAddCategoryInput(true)}>
+                <MenuItem value="add-new" onClick={() => setShowAddCategoryInput(true)} sx={{ direction: "rtl" }}>
                   הוסף קטגוריה חדשה
                 </MenuItem>
               </Select>
@@ -89,6 +94,8 @@ export default function AddCostumeDialog({
               value={newCategoryName}
               onChange={(e) => setNewCategoryName(e.target.value)}
               required
+              InputProps={{ style: { direction: "rtl" } }}
+              sx={{ direction: "rtl" }}
             />
           )}
           <TextField
@@ -96,24 +103,30 @@ export default function AddCostumeDialog({
             value={newCostume.size}
             onChange={(e) => setNewCostume({ ...newCostume, size: e.target.value })}
             required
+            InputProps={{ style: { direction: "rtl" } }}
+            sx={{ direction: "rtl" }}
           />
           <TextField
             label="כמות"
             type="number"
-            inputProps={{ min: 0 }}
+            inputProps={{ min: 0, style: { direction: "rtl" } }}
             value={newCostume.quantity}
             onChange={(e) => setNewCostume({ ...newCostume, quantity: +e.target.value })}
             required
+            InputProps={{ style: { direction: "rtl" } }}
+            sx={{ direction: "rtl" }}
           />
           <TextField
             label="מחיר ליום"
             type="number"
-            inputProps={{ min: 0 }}
+            inputProps={{ min: 0, style: { direction: "rtl" } }}
             value={newCostume.price_per_day}
             onChange={(e) => setNewCostume({ ...newCostume, price_per_day: +e.target.value })}
             required
+            InputProps={{ style: { direction: "rtl" } }}
+            sx={{ direction: "rtl" }}
           />
-          <DialogActions>
+          <DialogActions sx={{ direction: "rtl" }}>
             <Button type="submit" variant="contained" color="primary">
               הוספה
             </Button>

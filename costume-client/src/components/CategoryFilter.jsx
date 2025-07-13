@@ -9,6 +9,13 @@ export default function CategoryFilter({ categories, selectedCategory, setSelect
         value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
         label="סינון לפי קטגוריה"
+        MenuProps={{
+          PaperProps: {
+            sx: {
+              bgcolor: "#fff", // White background for dropdown options
+            },
+          },
+        }}
       >
         <MenuItem value="all">הצג הכל</MenuItem>
         {categories.map((cat) => (

@@ -128,13 +128,23 @@ export default function CostumesPage() {
           </Typography>
         </Box>
 
-        <CategoryFilter
-          categories={categories}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
-
-        <CostumeTable costumes={filteredCostumes} onDelete={handleDelete} />
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: 820,
+            mx: "auto",
+            mb: 2, // margin bottom for spacing
+          }}
+        >
+          <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+            <CategoryFilter
+              categories={categories}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          </Box>
+          <CostumeTable costumes={filteredCostumes} onDelete={handleDelete} />
+        </Box>
 
         <Fab
           color="primary"

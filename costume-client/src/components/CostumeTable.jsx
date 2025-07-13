@@ -13,8 +13,22 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function CostumeTable({ costumes, onDelete }) {
   return (
-    <Paper elevation={4} sx={{ borderRadius: 3, p: 3, maxWidth: 820, width: "100%" }}>
-      <TableContainer component={Paper}>
+    <Paper
+      elevation={4}
+      sx={{
+        borderRadius: 3,
+        p: 3,
+        maxWidth: 820,
+        width: "100%",
+        bgcolor: "#fff", // White background for the outer Paper
+      }}
+    >
+      <TableContainer
+        component={Paper}
+        sx={{
+          bgcolor: "#fff", // White background for the TableContainer
+        }}
+      >
         <Table>
           <TableHead>
             <TableRow>
